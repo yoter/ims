@@ -1,16 +1,19 @@
 import VueRouter from 'vue-router'
-import project from '../components/project/index.vue'
-import organization from '../components/organization/index.vue'
-import user from '../components/user/index.vue'
-import role from '../components/role/index.vue'
-import menus from '../components/permissions/menu.vue'
-import item from '../components/permissions/item.vue'
-import resource from '../components/permissions/resource.vue'
-import operation from '../components/permissions/operation.vue'
-
+import project from '../components/system/project/index.vue'
+import organization from '../components/system/organization/index.vue'
+import user from '../components/system/user/index.vue'
+import role from '../components/system/role/index.vue'
+import menus from '../components/system/permissions/menu.vue'
+import item from '../components/system/permissions/item.vue'
+import resource from '../components/system/permissions/resource.vue'
+import operation from '../components/system/permissions/operation.vue'
+import view from '../components/system/view/index.vue'
 
 
 const routes = [
+    {
+        path: '/view', component: view
+    },
     {
         path: '/project', component: project
     },

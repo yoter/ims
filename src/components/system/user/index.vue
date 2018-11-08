@@ -23,7 +23,7 @@
     import orgTree from '../organization/tree.vue'
     import role from '../role/index.vue'
     import users from './list.vue'
-    import request from '../../api/project'
+    import request from '../../../api/project'
 
     export default {
         name: 'user',

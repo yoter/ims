@@ -94,9 +94,9 @@
 </template>
 
 <script>
-    import Bus from '../../bus'
-    import request from '../../api/user'
-    import role_request from '../../api/role'
+    import Bus from '../../../bus'
+    import request from '../../../api/user'
+    import role_request from '../../../api/role'
 
 
     export default {

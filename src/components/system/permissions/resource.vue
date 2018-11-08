@@ -81,10 +81,10 @@
 </template>
 
 <script>
-    import request from '../../api/project'
+    import request from '../../../api/project'
 
     export default {
-        name: 'operation',
+        name: 'resource',
         data() {
             return {
                 tableData: [],

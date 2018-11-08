@@ -39,6 +39,7 @@
                             </el-table-column>
                             <el-table-column label="操作" width="180px">
                                 <template slot-scope="scope">
+                                    <el-button size="mini" @click="go()">设置</el-button>
                                     <el-button size="mini" @click="edit(scope.row)">编辑</el-button>
                                     <el-button size="mini" type="danger" @click="del(scope.row.id)">删除</el-button>
                                 </template>
@@ -81,7 +82,7 @@
 </template>
 
 <script>
-    import request from '../../api/project'
+    import request from '../../../api/project'
 
     export default {
         name: 'project',
@@ -102,6 +103,9 @@
             });
         },
         methods: {
+            go() {
+                this.$router.push('/organization');
+            },
             /**
              * 消息提示
              */

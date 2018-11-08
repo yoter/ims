@@ -68,7 +68,7 @@
 <script>
 
     import orgTree from './tree.vue'
-    import request from '../../api/organization'
+    import request from '../../../api/organization'
 
     export default {
         name: 'organization',

@@ -81,7 +81,7 @@
 </template>
 
 <script>
-    import request from '../../api/role'
+    import request from '../../../api/role'
 
 
     export default {

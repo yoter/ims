@@ -23,8 +23,8 @@
 
 
 <script>
-    import Bus from '../../bus'
-    import request from '../../api/organization'
+    import Bus from '../../../bus'
+    import request from '../../../api/organization'
 
     export default {
         name: 'orgTree',
