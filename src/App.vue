@@ -65,6 +65,10 @@
                                 </el-menu-item>
                             </el-submenu>
 
+                            <el-menu-item index="14">
+                                <router-link to="/subsys">子系统</router-link>
+                            </el-menu-item>
+
                             <el-menu-item index="13" style="float: right;">
                                 <router-link to="/project">返回</router-link>
                             </el-menu-item>

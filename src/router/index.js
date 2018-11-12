@@ -8,9 +8,12 @@ import item from '../components/system/permissions/item.vue'
 import resource from '../components/system/permissions/resource.vue'
 import operation from '../components/system/permissions/operation.vue'
 import view from '../components/system/view/index.vue'
-
+import subsys from '../components/system/subsys/index.vue'
 
 const routes = [
+    {
+        path: '/subsys', component: subsys
+    },
     {
         path: '/view', component: view
     },

@@ -1,74 +1,65 @@
 <template>
-    <div>
-        <drawer></drawer>
-        <div  id="containment-wrapper"  class="wrapper" :style="style">
-            <div id="draggable" class="draggable" style="height: 20px;width: 20px;background-color: darkmagenta;top: 10%;z-index: 1;"></div>
+    <div style="width: 800px;">
+        <el-row>
+            <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
+                <el-card :body-style="{ padding: '0px' }">
+                    <img src="../../../assets/images/hamburger.png" class="image">
+                    <div style="padding: 14px;">
+                        <span>门禁</span>
+                        <div class="bottom clearfix">
+                            <!--<time class="time">{{ currentDate }}</time>-->
+                            <time class="time">1号楼5层A区</time>
+                            <el-button type="text" class="button">
+                                进入系统
+                            </el-button>
+                        </div>
+                    </div>
+                </el-card>
+            </el-col>
 
-            <div id="draggable1" class="draggable" style="height: 20px;width: 20px;background-color: darkcyan;top: 60px;left:0px;z-index: 0;"></div>
-        </div>
+        </el-row>
     </div>
 </template>
 
-
 <style>
-    .wrapper {
-        position: relative;
-
-        border: 1px solid #ebebeb;
-        border-radius: 3px;
-        transition: .2s;
-
+    .time {
+        font-size: 13px;
+        color: #999;
     }
-    .draggable {
-        position: absolute;
-        display: inline-block;
+
+    .bottom {
+        margin-top: 13px;
+        line-height: 12px;
+    }
+
+    .button {
+        padding: 0;
+        float: right;
+    }
+
+    .image {
+        width: 100%;
+        height: 260px;
+        display: block;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+        display: table;
+        content: "";
+    }
+
+    .clearfix:after {
+        clear: both
     }
 </style>
 
 <script>
-    import structure from '../view/structure.vue'
-    import drawer from '../view/drawer.vue'
-    import $ from "jquery";
-//    import 'jquery-ui/themes/base/all.css'
-    import 'jquery-ui/ui/core'
-    import 'jquery-ui/ui/widgets/draggable'
     export default {
-        components: {
-            structure,
-            drawer
-        },
         data() {
             return {
-                style: {
-                    width: '800px',
-                    height: '500px'
-                },
-            }
-        },
-        mounted: function () {
-            this.$nextTick(function () {
-                const x = 480/500;
-
-
-                $( function() {
-                    $( "#draggable" ).draggable({ containment: "#containment-wrapper", scroll: false ,
-                        drag: function( event, ui ) {
-                            console.log(ui.position);
-                        },create: function( event, ui ) {
-                            console.log(ui);
-                        }
-                    });
-
-                    $( "#draggable1" ).draggable({ containment: "#containment-wrapper", scroll: false ,
-                        drag: function( event, ui ) {
-                            console.log(ui.position);
-                        },create: function( event, ui ) {
-                            console.log(ui);
-                        }
-                    });
-
-                } );
-            });
-        },
+                currentDate: new Date()
+            };
+        }
     }
 </script>
