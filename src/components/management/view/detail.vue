@@ -32,8 +32,10 @@
     //    import 'jquery-ui/themes/base/all.css'
     import 'jquery-ui/ui/core'
     import 'jquery-ui/ui/widgets/draggable'
+    import ElRow from "element-ui/packages/row/src/row";
     export default {
         components: {
+            ElRow,
             structure,
             drawer
         },
@@ -46,6 +48,7 @@
             }
         },
         mounted: function () {
+            console.log(this.$route.params)
             this.$nextTick(function () {
                 const x = 480/500;
 
@@ -70,5 +73,9 @@
                 } );
             });
         },
+        methods: {
+
+
+        }
     }
 </script>

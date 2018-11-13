@@ -13,7 +13,7 @@
         </ul>
     </div>
 </template>
-<style>
+<!--<style>
     .content{
         margin: 0 auto;
         width: 1200px;
@@ -43,7 +43,7 @@
         border-radius:4px;
         border-left-width:3px;
     }
-</style>
+</style>-->
 <script>
 
 </script>
