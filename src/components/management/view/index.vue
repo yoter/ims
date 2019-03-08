@@ -12,17 +12,18 @@
         <el-row style="width: 800px;">
             <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
                 <el-card :body-style="{ padding: '0px' }">
-                    <img src="../../../assets/images/hamburger.png" class="image">
+                    <img src="../../../assets/images/timg2.jpg" class="image">
                     <div style="padding: 14px;">
                         <span>门禁</span>
                         <div class="bottom clearfix">
                             <!--<time class="time">{{ currentDate }}</time>-->
                             <time class="time">1号楼5层A区</time>
 
-                            <el-button type="text" class="button" >
-                                <router-link tag="a" target="_blank" :to="{name:'vd',params:{id:'v'+index},query:{keywords:'手机'}}">
+                            <el-button type="text" class="button" @click="enter('v'+index)">
+                                <!--<router-link tag="a" target="_blank" :to="{name:'vd',params:{id:'v'+index},query:{keywords:'手机'}}">
                                     Enter
-                                </router-link>
+                                </router-link>-->
+                                Enter
                             </el-button>
                         </div>
                     </div>
@@ -42,7 +43,7 @@
                     <el-form-item label="名称" :label-width="formLabelWidth">
                         <el-input v-model="form.name" autocomplete="off"></el-input>
                     </el-form-item>
-                    <el-form-item label="场景" :label-width="formLabelWidth">
+                    <el-form-item label="底图" :label-width="formLabelWidth">
                         <el-input v-model="form.name" autocomplete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="描述" :label-width="formLabelWidth">

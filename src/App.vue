@@ -1,12 +1,12 @@
 <template>
     <div id="app">
-        <el-container>
-            <el-header v-show="$route.path !== '/project'">
+        <el-container style="width:1100px;margin: 0 auto;">
+            <!--<el-header v-show="$route.path !== '/project'">
                 <el-row>
                     <el-col :span="2">
-                        <!--<h1>
+                        <h1>
                             <img src="./assets/timg.jpg" style="height: 100px;"/>
-                        </h1>-->
+                        </h1>
                         <img src="./assets/timg1.jpg" style="height: 100px;"/>
                     </el-col>
                     <el-col :span="22" style="margin-top: 20px;">
@@ -80,6 +80,9 @@
                 </el-row>
             </el-header>
             <el-main style="margin-top: 80px;">
+                <router-view></router-view>
+            </el-main>-->
+            <el-main style="">
                 <router-view></router-view>
             </el-main>
         </el-container>
