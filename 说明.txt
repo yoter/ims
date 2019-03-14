@@ -1,0 +1,31 @@
+
+
+system
+
+view
+
+view_item:id event
+
+event
+
+
+
+
+classification: id code name system value_code mark_code ctrl_code
+
+classification_attribute:
+
+asset:id name code classification_code
+
+attribute:id code asset_code
+
+variable: id code asset_code value_code mark_code ctrl_code
+
+value
+
+state:id sort
+
+state_item
+
+ctrl
+
