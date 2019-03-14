@@ -155,6 +155,7 @@
 </style>
 <script>
     export default {
+        name:"control",
         data(){
             return{
                 input:"",

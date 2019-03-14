@@ -10,8 +10,37 @@ import operation from '../components/management/permissions/operation.vue'
 import view from '../components/management/view/index.vue'
 import view_detail from '../components/management/view/detail.vue'
 import subsys from '../components/management/subsys/index.vue'
+import classification from '../components/management/asset/classification/index.vue'
+import asset from '../components/management/asset/index.vue'
+import attribute from '../components/management/asset/attribute/index.vue'
+import variable from '../components/management/asset/variable/index.vue'
+import value from '../components/management/asset/variable/value/index.vue'
+import state from '../components/management/asset/variable/state/index.vue'
+import ctrl from '../components/management/asset/variable/ctrl/index.vue'
+
 
 const routes = [
+    {
+        path: '/classification', component: classification
+    },
+    {
+        path: '/asset', component: asset
+    },
+    {
+        path: '/attribute', component: attribute
+    },
+    {
+        path: '/variable', component: variable
+    },
+    {
+        path: '/value', component: value
+    },
+    {
+        path: '/state', component: state
+    },
+    {
+        path: '/ctrl', component: ctrl
+    },
     {
         path: '/subsys', component: subsys
     },

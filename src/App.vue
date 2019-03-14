@@ -1,87 +1,56 @@
 <template>
     <div id="app">
-        <el-container style="width:1100px;margin: 0 auto;">
-            <!--<el-header v-show="$route.path !== '/project'">
-                <el-row>
-                    <el-col :span="2">
-                        <h1>
-                            <img src="./assets/timg.jpg" style="height: 100px;"/>
-                        </h1>
-                        <img src="./assets/timg1.jpg" style="height: 100px;"/>
-                    </el-col>
-                    <el-col :span="22" style="margin-top: 20px;">
-                        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal"
-                                 @select="handleSelect">
-
-
-                            <el-menu-item index="1">
-                                <router-link to="/system">系统管理</router-link>
+        <el-container style="width:1300px;margin: 0 auto;">
+            <el-header>
+                <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+                    <el-submenu index="1">
+                        <template slot="title">视图管理</template>
+                        <el-menu-item index="1-1">
+                            <router-link to="/system">视图</router-link>
+                        </el-menu-item>
+                    </el-submenu>
+                    <el-submenu index="2">
+                        <template slot="title">资产管理</template>
+                        <el-menu-item index="2-1">
+                            <router-link to="/classification">分类</router-link>
+                        </el-menu-item>
+                        <el-menu-item index="2-2">
+                            <router-link to="/asset">资产</router-link>
+                        </el-menu-item>
+                        <el-menu-item index="2-3">
+                            <router-link to="/attribute">属性</router-link>
+                        </el-menu-item>
+                        <el-menu-item index="2-4">
+                            <router-link to="/variable">变量</router-link>
+                        </el-menu-item>
+                        <el-submenu index="2-5">
+                            <template slot="title">扩展</template>
+                            <el-menu-item index="2-5-1">
+                                <router-link to="/value">变量值</router-link>
                             </el-menu-item>
-                            <el-menu-item index="2">
-                                <router-link to="/view">视图管理</router-link>
+                            <el-menu-item index="2-5-2">
+                                <router-link to="/state">状态</router-link>
                             </el-menu-item>
-                            <el-menu-item index="3">
-                                <router-link to="/product">产品管理</router-link>
-                            </el-menu-item>
-                            <el-menu-item index="4">
-                                <router-link to="/device">设备管理</router-link>
-                            </el-menu-item>
-                            <el-menu-item index="5">
-                                <router-link to="/property">属性管理</router-link>
-                            </el-menu-item>
-                            <el-menu-item index="6">
-                                <router-link to="/point">数据采集点</router-link>
-                            </el-menu-item>
-                            <el-menu-item index="7">
-                                <router-link to="/parser">数据解析</router-link>
-                            </el-menu-item>
-                            <el-menu-item index="8">
-                                <router-link to="/image">图库管理</router-link>
-                            </el-menu-item>
-
-
-                            <el-menu-item index="9">
-                                <router-link to="/organization">组织结构</router-link>
-                            </el-menu-item>
-                            <el-menu-item index="10">
-                                <router-link to="/user">用户管理</router-link>
-                            </el-menu-item>
-                            <el-menu-item index="11">
-                                <router-link to="/role">角色管理</router-link>
-                            </el-menu-item>
-                            <el-submenu index="12">
-                                <template slot="title">权限管理</template>
-                                <el-menu-item index="12-1">
-                                    <router-link to="/menu">菜单</router-link>
-                                </el-menu-item>
-                                <el-menu-item index="12-2">
-                                    <router-link to="/item">元素</router-link>
-                                </el-menu-item>
-                                <el-menu-item index="12-3">
-                                    <router-link to="/resource">资源</router-link>
-                                </el-menu-item>
-                                <el-menu-item index="12-4">
-                                    <router-link to="/operation">操作</router-link>
-                                </el-menu-item>
-                            </el-submenu>
-
-                            <el-menu-item index="14">
-                                <router-link to="/subsys">子系统</router-link>
-                            </el-menu-item>
-
-                            <el-menu-item index="13" style="float: right;">
-                                <router-link to="/project">返回</router-link>
-                            </el-menu-item>
-
-
-                        </el-menu>
-
-                    </el-col>
-                </el-row>
+                            <el-menu-item index="2-5-3">
+                                <router-link to="/ctrl">控制</router-link></el-menu-item>
+                        </el-submenu>
+                    </el-submenu>
+                    <el-submenu index="3">
+                        <template slot="title">知识库</template>
+                        <el-menu-item index="3-1">KKS编码</el-menu-item>
+                    </el-submenu>
+                    <el-submenu index="4">
+                        <template slot="title">用户管理</template>
+                        <el-menu-item index="4-1">用户</el-menu-item>
+                        <el-menu-item index="4-2">角色</el-menu-item>
+                        <el-menu-item index="4-3">权限</el-menu-item>
+                    </el-submenu>
+                    <el-submenu index="5">
+                        <template slot="title">系统配置</template>
+                        <el-menu-item index="5-1">基础配置</el-menu-item>
+                    </el-submenu>
+                </el-menu>
             </el-header>
-            <el-main style="margin-top: 80px;">
-                <router-view></router-view>
-            </el-main>-->
             <el-main style="">
                 <router-view></router-view>
             </el-main>
@@ -91,11 +60,15 @@
 
 <script>
     import organization from './components/management/organization/index.vue'
+    import ElRow from "element-ui/packages/row/src/row";
+    import ElHeader from "../node_modules/element-ui/packages/header/src/main";
 
 
     export default {
         name: 'app',
         components: {
+            ElHeader,
+            ElRow,
             organization
         },
         data() {
