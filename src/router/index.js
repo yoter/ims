@@ -17,9 +17,20 @@ import variable from '../components/management/asset/variable/index.vue'
 import value from '../components/management/asset/variable/value/index.vue'
 import state from '../components/management/asset/variable/state/index.vue'
 import ctrl from '../components/management/asset/variable/ctrl/index.vue'
+import v from '../components/management/v/index.vue'
+import t1 from '../components/management/v/template/index.vue'
 
 
 const routes = [
+    {
+        path: '/v',
+        component: v
+    },
+    {
+        name:'t1',
+        path:'/v/t1',
+        component:t1
+    },
     {
         path: '/classification', component: classification
     },

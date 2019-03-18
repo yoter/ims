@@ -6,7 +6,7 @@
                     <el-submenu index="1">
                         <template slot="title">视图管理</template>
                         <el-menu-item index="1-1">
-                            <router-link to="/system">视图</router-link>
+                            <router-link to="/v">视图</router-link>
                         </el-menu-item>
                     </el-submenu>
                     <el-submenu index="2">
