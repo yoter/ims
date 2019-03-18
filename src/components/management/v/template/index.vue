@@ -50,8 +50,12 @@
                     </el-form-item>
                 </el-form>
             </el-tab-pane>
-            <el-tab-pane label="设备" name="third">
+            <el-tab-pane label="数据" name="third">
                 设备
+            </el-tab-pane>
+            <el-tab-pane label="资源" name="forth">
+                图片
+                图例
             </el-tab-pane>
         </el-tabs>
 
