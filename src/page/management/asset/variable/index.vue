@@ -1,7 +1,10 @@
 <template>
     <div>
         <h2>变量</h2>
-        <el-row style="margin: 60px auto 10px auto;">
+        <el-row style="margin: 20px auto;">
+            <el-button type="primary">生成组件</el-button>
+        </el-row>
+        <el-row style="margin: 10px auto;">
             <el-form :inline="true" :model="formInline" class="demo-form-inline">
                 <el-form-item label="系统">
                     <el-select v-model="formInline.region" placeholder="系统">
@@ -135,7 +138,9 @@
 
 
 <script>
+    import ElRow from "element-ui/packages/row/src/row";
     export default {
+        components: {ElRow},
         data() {
             return {
                 dialogFormVisible: false,

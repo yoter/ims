@@ -1,5 +1,5 @@
 <template>
-    <div></div>
+    <div>project</div>
 </template>
 <script>
     import com from "../component/index.vue";

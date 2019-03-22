@@ -90,7 +90,7 @@
 </template>
 
 <script>
-    import organization from './components/management/organization/index.vue'
+    import organization from './page/management/organization/index.vue'
 
 
     export default {

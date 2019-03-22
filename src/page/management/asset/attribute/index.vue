@@ -178,6 +178,7 @@
                 console.log('submit!');
             },
             formatter(row, column) {
+                console.log(column);
                 return row.address;
             },
             handleEdit(index, row) {

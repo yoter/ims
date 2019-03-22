@@ -1,8 +1,8 @@
 <template>
     <div>
         <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="视图" name="first">
-                视图
+            <el-tab-pane label="..." name="first">
+                ...
             </el-tab-pane>
             <el-tab-pane label="配置" name="second">
                 <el-form ref="form" :model="form" label-width="80px">
@@ -50,12 +50,11 @@
                     </el-form-item>
                 </el-form>
             </el-tab-pane>
-            <el-tab-pane label="数据" name="third">
-                设备
+            <el-tab-pane label="组件" name="third">
+                组件
             </el-tab-pane>
-            <el-tab-pane label="资源" name="forth">
-                图片
-                图例
+            <el-tab-pane label="视图" name="forth">
+                视图
             </el-tab-pane>
         </el-tabs>
 
