@@ -23,7 +23,7 @@
                     <el-form-item label="分类">
                         <el-select v-model="formInline.region" placeholder="分类">
                             <el-option label="按钮" value="shanghai"></el-option>
-                            <el-option label="变量" value="beijing"></el-option>
+                            <el-option label="设备" value="beijing"></el-option>
                             <el-option label="输入框" value="beijing"></el-option>
                         </el-select>
                     </el-form-item>
@@ -80,13 +80,18 @@
         </el-row>
         <el-row>
             <el-dialog title="编辑" :visible.sync="dialogFormVisible">
+
                 <el-form ref="form" :model="form" label-width="80px">
+                    <h3 style="margin-bottom: 20px;">组件类型</h3>
                     <el-form-item label="组件类型">
-                        <el-select v-model="form.region" placeholder="请选择组件类型">
-                            <el-option label="按钮" value="shanghai"></el-option>
-                            <el-option label="变量" value="beijing"></el-option>
+                        <el-select v-model="form.region" placeholder="请选择组件类型" style="width: 100%;">
+                            <el-option label="静态" value="shanghai"></el-option>
+                            <el-option label="监视" value="device"></el-option>
+                            <el-option label="控制" value="device"></el-option>
+
                         </el-select>
                     </el-form-item>
+                    <h3 style="margin-bottom: 20px;">设备信息</h3>
                     <el-form-item label="活动时间">
                         <el-col :span="11">
                             <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
@@ -117,6 +122,44 @@
                         <el-input type="textarea" v-model="form.desc"></el-input>
                     </el-form-item>
                 </el-form>
+                <h3 style="margin-bottom: 20px;">变量列表</h3>
+                <el-table
+                        :data="tableData"
+                        style="width: 100%"
+                        :default-sort = "{prop: 'date', order: 'descending'}"
+                >
+                    <el-table-column
+                            prop="name"
+                            label="系统"
+                            width="180">
+                    </el-table-column>
+                    <el-table-column
+                            prop="address"
+                            label="分类"
+                            :formatter="formatter">
+                    </el-table-column>
+                    <el-table-column
+                            prop="name"
+                            label="编码"
+                            width="180">
+                    </el-table-column>
+                    <el-table-column
+                            prop="address"
+                            label="名称">
+                    </el-table-column>
+                    <el-table-column
+                            prop="date"
+                            label="日期"
+                            sortable
+                            width="180">
+                    </el-table-column>
+                    <el-table-column label="操作">
+                        <template slot-scope="scope">
+                            <el-button type="primary" icon="el-icon-edit" @click="dialogFormVisible = true" circle></el-button>
+                            <el-button type="danger" icon="el-icon-delete" @click="handleDelete(scope.$index, scope.row)" circle></el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
                 <div slot="footer" class="dialog-footer">
                     <el-button @click="dialogFormVisible = false">取 消</el-button>
                     <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
@@ -130,8 +173,10 @@
 <script>
     import ElRow from "element-ui/packages/row/src/row";
     import ElButton from "../../../../node_modules/element-ui/packages/button/src/button";
+    import ElForm from "../../../../node_modules/element-ui/packages/form/src/form";
     export default {
         components: {
+            ElForm,
             ElButton,
             ElRow},
         data() {
@@ -155,7 +200,7 @@
                 }],
                 form: {
                     name: '',
-                    region: '',
+                    region: 'device',
                     date1: '',
                     date2: '',
                     delivery: false,
