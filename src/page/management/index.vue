@@ -37,7 +37,11 @@
                             <router-link to="/management/state">状态</router-link>
                         </el-menu-item>
                         <el-menu-item index="3-5-3">
-                            <router-link to="/management/ctrl">控制</router-link></el-menu-item>
+                            <router-link to="/management/ctrl">控制</router-link>
+                        </el-menu-item>
+                        <el-menu-item index="3-5-4">
+                            <router-link to="/management/ctrl">服务</router-link>
+                        </el-menu-item>
                     </el-submenu>
                 </el-submenu>
                 <el-submenu index="4">

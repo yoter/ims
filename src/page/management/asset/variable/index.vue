@@ -39,7 +39,7 @@
             <el-table
                     :data="tableData"
                     style="width: 100%"
-                    :default-sort = "{prop: 'date', order: 'descending'}"
+                    :default-sort="{prop: 'date', order: 'descending'}"
             >
                 <el-table-column
                         prop="name"
@@ -68,8 +68,10 @@
                 </el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
-                        <el-button type="primary" icon="el-icon-edit" @click="dialogFormVisible = true" circle></el-button>
-                        <el-button type="danger" icon="el-icon-delete" @click="handleDelete(scope.$index, scope.row)" circle></el-button>
+                        <el-button type="primary" icon="el-icon-edit" @click="dialogVisible = true"
+                                   circle></el-button>
+                        <el-button type="danger" icon="el-icon-delete" @click="handleDelete(scope.$index, scope.row)"
+                                   circle></el-button>
                         <el-popover
                                 placement="right"
                                 width="400"
@@ -77,7 +79,8 @@
                             <el-button type="success" icon="el-icon-check" circle></el-button>
                             <el-button type="info" icon="el-icon-message" circle></el-button>
                             <el-button type="warning" icon="el-icon-star-off" circle></el-button>
-                            <el-button icon="el-icon-more" circle slot="reference" style="margin-left: 10px;"></el-button>
+                            <el-button icon="el-icon-more" circle slot="reference"
+                                       style="margin-left: 10px;"></el-button>
                         </el-popover>
                     </template>
                 </el-table-column>
@@ -87,63 +90,250 @@
         <!-- Form -->
         <!--<el-button type="text" @click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>-->
 
-        <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
-            <el-form ref="form" :model="form" label-width="80px">
-                <el-form-item label="活动名称">
-                    <el-input v-model="form.name"></el-input>
-                </el-form-item>
-                <el-form-item label="活动区域">
-                    <el-select v-model="form.region" placeholder="请选择活动区域">
-                        <el-option label="区域一" value="shanghai"></el-option>
-                        <el-option label="区域二" value="beijing"></el-option>
-                    </el-select>
-                </el-form-item>
-                <el-form-item label="活动时间">
-                    <el-col :span="11">
-                        <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
-                    </el-col>
-                    <el-col class="line" :span="2">-</el-col>
-                    <el-col :span="11">
-                        <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
-                    </el-col>
-                </el-form-item>
-                <el-form-item label="即时配送">
-                    <el-switch v-model="form.delivery"></el-switch>
-                </el-form-item>
-                <el-form-item label="活动性质">
-                    <el-checkbox-group v-model="form.type">
-                        <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
-                        <el-checkbox label="地推活动" name="type"></el-checkbox>
-                        <el-checkbox label="线下主题活动" name="type"></el-checkbox>
-                        <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
-                    </el-checkbox-group>
-                </el-form-item>
-                <el-form-item label="特殊资源">
-                    <el-radio-group v-model="form.resource">
-                        <el-radio label="线上品牌商赞助"></el-radio>
-                        <el-radio label="线下场地免费"></el-radio>
-                    </el-radio-group>
-                </el-form-item>
-                <el-form-item label="活动形式">
-                    <el-input type="textarea" v-model="form.desc"></el-input>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click="dialogFormVisible = false">取 消</el-button>
-                <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
-            </div>
+        <el-dialog
+                title="提示"
+                :visible.sync="dialogVisible"
+                :before-close="handleClose">
+                <span>
+                    <el-collapse v-model="activeNames" @change="handleChange">
+                        <el-collapse-item title="基础信息" name="1">
+                            <el-form :inline="true" :model="ruleForm" ref="ruleForm" label-width="100px"
+                                     class="demo-ruleForm">
+                                <el-form-item label="组件名称" prop="name">
+                                    <el-input v-model="ruleForm.name"></el-input>
+                                </el-form-item>
+                                <el-form-item label="组件编码" prop="name">
+                                    <el-input v-model="ruleForm.name"></el-input>
+                                </el-form-item>
+                                <el-form-item label="活动名称" prop="name">
+                                    <el-input v-model="ruleForm.name"></el-input>
+                                </el-form-item>
+                                <el-form-item label="活动名称" prop="name">
+                                    <el-input v-model="ruleForm.name"></el-input>
+                                </el-form-item>
+                                <el-form-item label="活动名称" prop="name">
+                                    <el-input v-model="ruleForm.name"></el-input>
+                                </el-form-item>
+                            </el-form>
+                        </el-collapse-item>
+                        <!--<el-collapse-item title="组件值" name="2">
+                            <el-row style="margin: 10px auto 35px auto;text-align: right;">
+                                <el-button type="success" icon="el-icon-plus" circle></el-button>
+                            </el-row>
+                            <ul>
+                                <li>值</li>
+                                <li>描述</li>
+                                <li style="width: 10%;">操作</li>
+                            </ul>
+                            <ul>
+                                <li>1</li>
+                                <li>开</li>
+                                <li style="width: 10%;">编辑 删除</li>
+                            </ul>
+                            <ul>
+                                <li>1</li>
+                                <li>开</li>
+                                <li style="width: 10%;">编辑 删除</li>
+                            </ul>
+                        </el-collapse-item>-->
+                        <el-collapse-item title="监视器" name="3">
+                            <el-row style="margin: 10px 20px 10px auto;text-align: right;">
+                                <i class="el-icon-search" style="margin-right: 10px;"></i>
+                                <i class="el-icon-delete" style="margin-right: 10px;"></i>
+                                <!--<el-button icon="el-icon-search" circle></el-button>-->
+                                <!--<el-button type="success" icon="el-icon-plus" circle></el-button>-->
+                                <!--<el-button type="success" icon="el-icon-check" circle></el-button>
+                                <el-button type="info" icon="el-icon-message" circle></el-button>
+                                <el-button type="warning" icon="el-icon-star-off" circle></el-button>
+                                <el-button type="danger" icon="el-icon-delete" circle></el-button>-->
+                            </el-row>
+
+
+                            <!--<div style="display:inline-flex;margin:20px 10px;height:80px;width:150px;padding: 14px 26px 14px 13px;border: 1px solid #ebeef5;border-radius:8px; ">
+                                <div :style="{backgroundImage:'url('+require('../../../assets/images/all_small_icons.png')+')'}"
+                                     style="width: 50px;background-position: -1049px -376px;">
+                                </div>
+                                <div>
+                                    <h2>故障</h2>
+                                    <div><p>fault</p></div>
+                                </div>
+                            </div>-->
+                            <div style="display:inline-flex;margin:20px 10px;height:80px;width:150px;padding: 14px 26px 14px 13px;">
+                                <div :style="{backgroundImage:'url('+require('../../../../assets/images/all_small_icons.png')+')'}"
+                                     style="width: 50px;background-position: -1049px -376px;">
+                                </div>
+                                <div>
+                                    <h2>故障</h2>
+                                    <div><p>fault</p></div>
+                                </div>
+                            </div>
+
+                            <div style="display:inline-flex;margin:20px 10px;height:80px;width:150px;padding: 14px 26px 14px 13px;">
+                                <div :style="{backgroundImage:'url('+require('../../../../assets/images/all_small_icons.png')+')'}"
+                                     style="width: 50px;background-position: -1049px -376px;">
+                                </div>
+                                <div>
+                                    <h2>故障</h2>
+                                    <div><p>fault</p></div>
+                                </div>
+                            </div>
+
+                            <div style="display:inline-flex;margin:20px 10px;height:80px;width:150px;padding: 14px 26px 14px 13px;">
+                                <div :style="{backgroundImage:'url('+require('../../../../assets/images/all_small_icons.png')+')'}"
+                                     style="width: 50px;background-position: -1049px -376px;">
+                                </div>
+                                <div>
+                                    <h2>故障</h2>
+                                    <div><p>fault</p></div>
+                                </div>
+                            </div>
+
+                            <div style="display:inline-flex;margin:20px 10px;height:80px;width:150px;padding: 14px 26px 14px 13px;">
+                                <div :style="{backgroundImage:'url('+require('../../../../assets/images/all_small_icons.png')+')'}"
+                                     style="width: 50px;background-position: -1049px -376px;">
+                                </div>
+                                <div>
+                                    <h2>故障</h2>
+                                    <div><p>fault</p></div>
+                                </div>
+                            </div>
+
+                            <div style="display:inline-flex;margin:20px 10px;height:80px;width:150px;padding: 14px 26px 14px 13px;">
+                                <div :style="{backgroundImage:'url('+require('../../../../assets/images/all_small_icons.png')+')'}"
+                                     style="width: 50px;background-position: -1049px -376px;">
+                                </div>
+                                <div>
+                                    <h2>故障</h2>
+                                    <div><p>fault</p></div>
+                                </div>
+                            </div>
+
+                            <!--<ul>
+                                <li>组件值</li>
+                                <li>标签</li>
+                                <li>图标</li>
+                                <li style="width: 10%;">操作</li>
+                            </ul>
+                            <ul>
+                                <li>1</li>
+                                <li>开</li>
+                                <li><img src=""/></li>
+                                <li style="width: 10%;">编辑 删除</li>
+                            </ul>
+                            <ul>
+                                <li>1</li>
+                                <li>开</li>
+                                <li><img src=""/></li>
+                                <li style="width: 10%;">编辑 删除</li>
+                            </ul>-->
+                        </el-collapse-item>
+                        <el-collapse-item title="控制器" name="4">
+                            <el-row style="margin: 10px 20px 10px auto;text-align: right;">
+                                <i class="el-icon-search" style="margin-right: 10px;" @click="dialogVisible = true"></i>
+                                <!--<i class="el-icon-edit" style="margin-right: 10px;"></i>-->
+                                <i class="el-icon-delete" style="margin-right: 10px;"></i>
+                                <!--<el-button icon="el-icon-search" circle @click="dialogVisible = true"></el-button>-->
+                                <!--<el-button type="success" icon="el-icon-plus" circle></el-button>-->
+                                <!--<el-button type="success" icon="el-icon-check" circle></el-button>
+                                <el-button type="info" icon="el-icon-message" circle></el-button>
+                                <el-button type="warning" icon="el-icon-star-off" circle></el-button>
+                                <el-button type="danger" icon="el-icon-delete" circle></el-button>-->
+                            </el-row>
+                            <el-row>
+                                <div>
+                                    <el-row>
+                                        <h2 style="display: inline-block;width: 95%;">按钮</h2>
+                                        <!-- <i class="el-icon-edit"></i>
+                                         <i class="el-icon-delete"></i>-->
+                                    </el-row>
+                                    <el-row style="margin-top: 20px;">
+                                        <!--<h3>按钮:</h3>-->
+                                        <div class="block" style="margin: 20px auto 10px auto;">
+                                            <el-switch
+                                                    v-model="value2"
+                                                    active-color="#13ce66"
+                                                    inactive-color="#ff4949">
+                                            </el-switch>
+                                        </div>
+                                    </el-row>
+                                    <el-row style="margin-top: 20px;">
+                                        <h2>配置信息:</h2>
+                                        <div class="block" style="margin: 20px auto 10px auto;">
+                                            <ul>
+                                                <li>最小值：0</li>
+                                                <li>最大值：10</li>
+                                                <li>步长：2</li>
+                                            </ul>
+                                        </div>
+                                    </el-row>
+                                </div>
+                                <!--<el-card class="box-card card" style="width: inherit;">
+
+                                </el-card>-->
+                            </el-row>
+                        </el-collapse-item>
+                        <el-collapse-item title="事件" name="5">
+                            <el-row style="margin: 10px 20px 10px auto;text-align: right;">
+                                <i class="el-icon-search" style="margin-right: 10px;" @click="dialogVisible = true"></i>
+                                <!--<i class="el-icon-edit" style="margin-right: 10px;"></i>-->
+                                <i class="el-icon-delete" style="margin-right: 10px;"></i>
+                                <!--<el-button icon="el-icon-search" circle @click="dialogVisible = true"></el-button>-->
+                                <!--<el-button type="success" icon="el-icon-plus" circle></el-button>-->
+                                <!--<el-button type="success" icon="el-icon-check" circle></el-button>
+                                <el-button type="info" icon="el-icon-message" circle></el-button>
+                                <el-button type="warning" icon="el-icon-star-off" circle></el-button>
+                                <el-button type="danger" icon="el-icon-delete" circle></el-button>-->
+                            </el-row>
+                            <el-row>
+                                <div style="display: flex;margin-bottom: 10px;">
+                                    <div style="flex-grow: 1;">单击鼠标左键</div>
+                                    <div style="flex-grow: 1;">展示设备属性面板</div>
+                                    <div style="flex-grow: 1;">发送...指令</div>
+                                </div>
+                                <div style="display: flex;margin-bottom: 10px;">
+                                    <div style="flex-grow: 1;">单击鼠标左键</div>
+                                    <div style="flex-grow: 1;">展示设备属性面板</div>
+                                    <div style="flex-grow: 1;">发送...指令</div>
+                                </div>
+                            </el-row>
+                        </el-collapse-item>
+                    </el-collapse>
+                </span>
+            <span slot="footer" class="dialog-footer">
+                    <el-button @click="dialogVisible = false">取 消</el-button>
+                    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+                </span>
         </el-dialog>
     </div>
 </template>
 
+<style>
+    ul {
+        list-style: none;
+        margin: 10px auto;
+    }
 
+    ul li {
+        display: inline-block;
+        /*width: 42%;*/
+
+    }
+
+    .box-card {
+        width: 1050px;
+    }
+
+    a {
+        margin-right: 10px;
+    }
+</style>
 <script>
     import ElRow from "element-ui/packages/row/src/row";
     export default {
         components: {ElRow},
         data() {
             return {
-                dialogFormVisible: false,
+                dialogVisible: false,
                 form: {
                     name: '',
                     region: '',
@@ -175,7 +365,12 @@
                 formInline: {
                     user: '',
                     region: ''
-                }
+                },
+                activeNames: ['1', '2', '3', '4', '5'],
+                ruleForm: {
+                    name: '',
+                },
+                value2: true,
             };
         },
         methods: {
@@ -190,7 +385,18 @@
             },
             handleDelete(index, row) {
                 console.log(index, row);
-            }
+            },
+            handleClose(done) {
+                this.$confirm('确认关闭？')
+                    .then(_ => {
+                        done();
+                    })
+                    .catch(_ => {
+                    });
+            },
+            handleChange(val) {
+                console.log(val);
+            },
         }
     };
 </script>
